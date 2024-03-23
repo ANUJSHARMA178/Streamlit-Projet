@@ -9,15 +9,18 @@ st.set_page_config(layout= "wide",
                    page_icon=":soccer:")  # Add a little soccer ball icon!
 
 @st.cache_data
-def load():
-    return pd.read_csv('premierleague.csv')
+def load():  
+    return pd.read_csv('PremierLeague.csv')
+
+# Load the data once per app session. This function gets called only when
+# the module is loaded, and not at every rerun. It's ideal for large datasets that don't change often.
 
 # main load starts here
 df = load()
 
 st.image('banner.jpeg',use_column_width=True)
 st.title("Premier League Dashboard")
-with st.expander('View raw premier league data'):
+with st.expander('View raw Premier L  eague data'):
     st.dataframe(df.sample(1000))
 
 rows,cols = df.shape
